@@ -1,0 +1,16 @@
+button {
+    width:100%;
+    color:brown;
+    background-color:aquamarine;
+    border:0px;
+}
+
+#display {
+    background-color:black;
+    color:rgb(114, 250, 2);
+    border:0px;
+}
+
+table {
+    background-color:cornsilk;
+}

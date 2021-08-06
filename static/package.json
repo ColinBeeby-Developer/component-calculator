@@ -1,0 +1,15 @@
+{
+  "name": "cols-custom-calculator",
+  "version": "1.0.0",
+  "description": "A calculator web component",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "calculator",
+    "component"
+  ],
+  "author": "Colin Beeby",
+  "license": "MIT"
+}
