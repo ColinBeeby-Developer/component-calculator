@@ -4,36 +4,38 @@ calculatorTemplate.innerHTML = `
     <style>
     @import "static/calculator.css"
     </style>
-    <header>Calculator</header>
-    <table>
-        <tr>
-            <td colspan="4"><input type="text" id="display" style="text-align:right"></td>
-        </tr>
-        <tr>
-            <td><button id="7" value="7">7</button></td>
-            <td><button id="8" value="8">8</button></td>
-            <td><button id="9" value="9">9</button></td>
-            <td><button id="*" value="*">*</button></td>
-        </tr>
-        <tr>
-            <td><button id="4" value="4">4</button></td>
-            <td><button id="5" value="5">5</button></td>
-            <td><button id="6" value="6">6</button></td>
-            <td><button id="-" value="-">-</button></td>
-        </tr>
-        <tr>
-            <td><button id="1" value="1">1</button></td>
-            <td><button id="2" value="2">2</button></td>
-            <td><button id="3" value="3">3</button></td>
-            <td><button id="+" value="+">+</button></td>
-        </tr>
-        <tr>
-            <td><button id="C" value="C">C</button></td>
-            <td><button id="0" value="0">0</button></td>
-            <td><button id="=" value="=">=</button></td>
-            <td><button id="/" value="/">/</button></td>
-        </tr>
-    </table>
+    <div id="calc-container" class="calc-container-light">
+        <header>Calculator</header>
+        <table>
+            <tr>
+                <td colspan="4"><input type="text" id="display" style="text-align:right"></td>
+            </tr>
+            <tr>
+                <td><button id="7" value="7">7</button></td>
+                <td><button id="8" value="8">8</button></td>
+                <td><button id="9" value="9">9</button></td>
+                <td><button id="*" value="*">*</button></td>
+            </tr>
+            <tr>
+                <td><button id="4" value="4">4</button></td>
+                <td><button id="5" value="5">5</button></td>
+                <td><button id="6" value="6">6</button></td>
+                <td><button id="-" value="-">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="1" value="1">1</button></td>
+                <td><button id="2" value="2">2</button></td>
+                <td><button id="3" value="3">3</button></td>
+                <td><button id="+" value="+">+</button></td>
+            </tr>
+            <tr>
+                <td><button id="C" value="C">C</button></td>
+                <td><button id="0" value="0">0</button></td>
+                <td><button id="=" value="=">=</button></td>
+                <td><button id="/" value="/">/</button></td>
+            </tr>
+        </table>
+    </div>
 `;
 
 class Calculator extends HTMLElement {
@@ -62,6 +64,15 @@ class Calculator extends HTMLElement {
         this.shadowRoot.getElementById('/').addEventListener('click', e => this.insertOperator(e));
         this.shadowRoot.getElementById('=').addEventListener('click', e => this.evaluate(e));
         this.shadowRoot.getElementById('C').addEventListener('click', e => this.clearDisplay(e));
+        this.updateTheme(this.getAttribute('theme'));
+    }
+
+    updateTheme(theme){
+        let val = "light";
+        if(["dark", "light"].indexOf(theme) > -1){
+            val = theme
+        }
+        this.shadowRoot.getElementById('calc-container').className = "calc-container-" + val;
     }
 
     insertNumber(event){
